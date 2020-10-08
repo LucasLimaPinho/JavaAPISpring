@@ -11,17 +11,20 @@ public class BinarySearchImpl {
 	//Com @Autowired, estou falando que BinarySearchImpl depende de SortAlgorithm
 	//SortAlgorithm com @Autowired é uma dependência de BinarySearchImpl
 	
+
+	@Autowired
+	private SortAlgorithm sortAlgorithm;	
+	
+	
 	//Constructor Injection right here.
 	//Tirando de 'logging.level.com.springframework = debug", temos o seguinte:
 	//"Autowiring by type from bean name 'binarySearchImpl' via constructor to bean named 'bubbleSortAlgorithm'"
-	@Autowired
-	private SortAlgorithm sortAlgorithm;
 	
 	
-	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
-		super();
-		this.sortAlgorithm = sortAlgorithm;
-	}
+	/*
+	 * public BinarySearchImpl(SortAlgorithm sortAlgorithm) { super();
+	 * this.sortAlgorithm = sortAlgorithm; }
+	 */
 
 
 	public int binarySearch(int [] numbers, int numberToSearch) {
@@ -38,6 +41,16 @@ public class BinarySearchImpl {
 		return 3;
 		
 		
+	}
+
+	public SortAlgorithm getSortAlgorithm() {
+		return sortAlgorithm;
+	}
+
+	//Setter Injection right here
+	
+	public void setSortAlgorithm(SortAlgorithm sortAlgorithm) {
+		this.sortAlgorithm = sortAlgorithm;
 	}
 
 }
